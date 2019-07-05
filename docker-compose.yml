@@ -6,11 +6,12 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'finatra-server'
+      MYSQL_DATABASE: 'mydb'
       TZ: 'Asia/Tokyo'
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--ft_min_word_len=2', '--innodb_ft_min_token_size=2', '--sql-mode=STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION']
     volumes:
       - mysqlvol:/var/lib/mysql
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
     ports:
       - "3307:3306"
 volumes:

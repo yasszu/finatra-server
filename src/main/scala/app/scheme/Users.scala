@@ -1,4 +1,4 @@
-package app.db.scheme
+package app.scheme
 
 case class Users(
     id: Long,
