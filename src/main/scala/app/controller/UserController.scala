@@ -22,8 +22,19 @@ class UserController @Inject()(repository: UserRepository) extends Controller {
       case Some(user) => response.ok(user)
       case None => response.notFound(new Exception("Not Found"))
     } handle {
-      case e: Exception  => response.internalServerError(e.getMessage)
+      case e: Exception => response.internalServerError(e.getMessage)
     }
+  }
+
+  get("/users") { request: Request =>
+    val page = request.params("page").toInt
+    val limit = request.params("limit").toInt
+    repository.findAll(page, limit) map {
+      users => response.ok(users)
+    } handle {
+      case e: Exception => response.internalServerError(e.getMessage)
+    }
+
   }
 
 }
