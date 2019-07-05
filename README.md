@@ -34,16 +34,16 @@
 $ curl -i -X POST http://localhost:8888/user -d '{"name":"test","email":"sample@test.com","comment":"testtesttest"}'
 ```
 
-### GET /user/:id
+### GET /users/:id
 
 ```
-$ curl -i -X GET 'http://localhost:8888/user/1'
+$ curl -i -X GET 'http://localhost:8888/users/1'
 ```
 
 ### GET /users?page=0&count=3
 
 ```
-$ curl -i -X GET 'http://localhost:8888/users?page=0&count=3'
+$ curl -i -X GET 'http://localhost:8888/users?page=1&limit=3'
 ```
 
 ### PUT /user/:id

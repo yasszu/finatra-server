@@ -15,7 +15,7 @@ class UserRepositoryImpl @Inject()(ctx: FinagleMysqlContext[SnakeCase]) extends 
     val q = quote {
       query[Users]
         .map(u => User(u.id, u.name, u.email, u.comment))
-        .drop(lift(page))
+        .drop(lift(page - 1))
         .take(lift(limit))
     }
     ctx.run(q)
