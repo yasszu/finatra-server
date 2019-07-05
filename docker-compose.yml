@@ -2,11 +2,11 @@ version: "3.7"
 
 services:
   mysql:
-    container_name: finagle-server_mysql
+    container_name: finatra-server_mysql
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'finagle-server'
+      MYSQL_DATABASE: 'finatra-server'
       TZ: 'Asia/Tokyo'
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--ft_min_word_len=2', '--innodb_ft_min_token_size=2', '--sql-mode=STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION']
     volumes:
