@@ -13,7 +13,7 @@ import javax.inject.{Inject, Singleton}
 class UserController @Inject()(repository: UserRepository) extends Controller {
 
   get("/") { request: Request =>
-    response.ok.file("/file123.txt")
+    response.ok.file("index.html")
   }
 
   get("/users/:id") { request: Request =>
