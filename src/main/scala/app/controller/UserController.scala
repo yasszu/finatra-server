@@ -5,11 +5,15 @@ import com.twitter.finagle.http.Request
 import com.twitter.finatra.http._
 import javax.inject.{Inject, Singleton}
 
+/**
+  * HTTP Controller
+  * https://twitter.github.io/finatra/user-guide/http/controllers.html
+  */
 @Singleton
 class UserController @Inject()(repository: UserRepository) extends Controller {
 
   get("/") { request: Request =>
-    "<h1>Hello, world!</h1>"
+    response.ok.file("/file123.txt")
   }
 
   get("/users/:id") { request: Request =>
