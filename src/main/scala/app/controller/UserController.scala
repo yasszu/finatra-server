@@ -34,7 +34,6 @@ class UserController @Inject()(repository: UserRepository) extends Controller {
     } handle {
       case e: Exception => response.internalServerError(e.getMessage)
     }
-
   }
 
 }
