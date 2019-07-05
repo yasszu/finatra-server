@@ -6,9 +6,9 @@ import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
 import com.twitter.finatra.http.routing.HttpRouter
 
-object Main extends UserServer
+object Main extends MainServer
 
-class UserServer extends HttpServer {
+class MainServer extends HttpServer {
 
   override val modules  = Seq(UserModule)
 
