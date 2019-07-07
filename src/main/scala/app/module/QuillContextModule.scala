@@ -10,7 +10,7 @@ object QuillContextModule  extends TwitterModule {
   @Singleton
   @Provides
   def providesContext: FinagleMysqlContext[SnakeCase] = {
-    new FinagleMysqlContext(SnakeCase, "ctx")
+    new FinagleMysqlContext(SnakeCase, "db")
   }
 
 }
