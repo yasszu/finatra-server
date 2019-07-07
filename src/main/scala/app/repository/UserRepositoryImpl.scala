@@ -41,7 +41,17 @@ class UserRepositoryImpl @Inject()(ctx: FinagleMysqlContext[SnakeCase]) extends 
     ctx.run(q)
   }
 
-  override def update(userId: Long, name: String, email: String, comment: String): Future[Long] = ???
+  override def update(userId: Long, name: String, email: String, comment: String): Future[Long] = {
+    val q = quote {
+      query[Users]
+        .filter(u => u.id == lift(userId))
+        .update(
+          _.name -> lift(name),
+          _.email -> lift(email),
+          _.comment -> lift(comment))
+    }
+    ctx.run(q)
+  }
 
   override def delete(userId: Long): Future[Long] = ???
 

@@ -24,14 +24,20 @@ class UserController @Inject()(repository: UserRepository) extends Controller {
     }
   }
 
-  get("/users") { req: UsersQueryRequest =>
+  get("/users") { req: UsersGetRequest =>
     repository.findAll(req.page, req.limit) map { users =>
       response.ok(users)
     }
   }
 
-  post("/users") { req: UserFormRequest =>
-    repository.create(req.name, req.email, req.comment) map { id =>
+  post("/users") { req: UserPostRequest =>
+    repository.create(req.name, req.email, req.comment) map { _ =>
+      response.ok("ok")
+    }
+  }
+
+  put("/users/:id") { req: UserPutRequest =>
+    repository.update(req.id, req.name, req.email, req.comment) map { _ =>
       response.ok("ok")
     }
   }
