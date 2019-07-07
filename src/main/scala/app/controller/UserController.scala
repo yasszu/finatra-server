@@ -32,13 +32,20 @@ class UserController @Inject()(repository: UserRepository) extends Controller {
 
   post("/users") { req: UserPostRequest =>
     repository.create(req.name, req.email, req.comment) map { _ =>
-      response.ok("ok")
+      response.ok(s"${req.name} is deleted!")
     }
   }
 
   put("/users/:id") { req: UserPutRequest =>
     repository.update(req.id, req.name, req.email, req.comment) map { _ =>
-      response.ok("ok")
+      response.ok(s"${req.name} is updated!")
+    }
+  }
+
+  delete("/users/:id") { req: Request =>
+    val id = req.params("id").toLong
+    repository.delete(id) map { _ =>
+      response.ok(s"User:$id is deleted!")
     }
   }
 

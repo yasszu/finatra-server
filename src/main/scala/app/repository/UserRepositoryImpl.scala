@@ -53,6 +53,13 @@ class UserRepositoryImpl @Inject()(ctx: FinagleMysqlContext[SnakeCase]) extends 
     ctx.run(q)
   }
 
-  override def delete(userId: Long): Future[Long] = ???
+  override def delete(userId: Long): Future[Long] = {
+    val q = quote {
+      query[Users]
+        .filter(u => u.id == lift(userId))
+        .update(_.del_flg -> true)
+    }
+    ctx.run(q)
+  }
 
 }
