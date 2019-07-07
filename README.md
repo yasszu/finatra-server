@@ -23,7 +23,7 @@
 * Run process
     
     ```
-    $ java -jar target/scala-2.12/finch-server-assembly-1.0.jar &
+    $ java -jar target/scala-2.12/finatra-server-assembly-1.0.jar &
     ```    
 
 ## Requests     
@@ -50,13 +50,13 @@ $ curl -i -X GET 'http://localhost:8888/users?page=1&limit=3'
 
 ```
 $ curl -i -X PUT \
-  http://localhost:8888/user/:id \
-  -H 'content-type: application/json' \
-  -d '{"name":"ABC","email":"ABC@test.com","comment":"testtesttest"}'
+    http://localhost:8888/users/:id \
+    -H 'Content-Type: application/x-www-form-urlencoded' \
+    -d 'name=abcd&email=abcd@sample.com&comment=test'
 ```
 
 ### DELETE /user/:id
 
 ```
-$ curl -i -X DELETE http://localhost:8888/user/:id
+$ curl -i -X DELETE http://localhost:8888/users/:id
 ```
