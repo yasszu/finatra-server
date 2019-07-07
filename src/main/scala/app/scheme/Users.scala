@@ -4,5 +4,5 @@ case class Users(
     id: Long,
     name: String,
     email: String,
-    comment: String
-)
+    comment: String,
+    del_flg: Boolean)
