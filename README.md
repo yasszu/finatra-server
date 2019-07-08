@@ -1,5 +1,4 @@
-# Example of API Server with [Finatra](https://twitter.github.io/finatra/)
-## Getting Started
+# Example of API Server with Finatra
 
 1. Start a MySQL server  
     ```
